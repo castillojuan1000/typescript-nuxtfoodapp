@@ -1,5 +1,5 @@
 <template>
-  <footer>@copyrights Juan Castillo | 2021</footer>
+  <h1>Cart</h1>
 </template>
 
 <script lang="ts">
