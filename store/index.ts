@@ -1,5 +1,6 @@
 
 import { Restaurant } from '@/api/interfaces'
+
 export interface RestaurantStoreState {
   foodData: Restaurant[]
 }
