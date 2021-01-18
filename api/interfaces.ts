@@ -1,4 +1,4 @@
-export interface Restaurants {
+export interface Restaurant {
   name: string;
   deliveryTime: number;
   meal: string[];
