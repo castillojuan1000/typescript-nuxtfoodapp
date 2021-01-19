@@ -17,3 +17,13 @@ export interface Item {
   addOns: string[];
   description: string;
 }
+
+
+export interface FormOutput {
+  id: string;
+  item: string;
+  count: number;
+  options?: string;
+  addOns: string[];
+  combinedPrice: number;
+}
