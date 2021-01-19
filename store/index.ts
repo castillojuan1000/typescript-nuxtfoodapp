@@ -1,18 +1,9 @@
 
-import { Restaurant } from '@/api/interfaces'
-
+import { Restaurant } from '~/interfaces/interfaces'
+import { FormOutput } from '@/interfaces/interfaces'
 export interface RestaurantStoreState {
   foodData: Restaurant[]
   cart: FormOutput[]
-}
-
-export interface FormOutput {
-  id: string;
-  item: string;
-  count: number;
-  options?: string;
-  addOns: string[];
-  combinedPrice: number;
 }
 
 
