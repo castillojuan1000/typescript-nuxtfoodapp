@@ -47,10 +47,10 @@
           <label :for="addon">{{ addon }}</label>
         </div>
       </fieldset>
-      <!-- <Toast v-if="cartSubmitted">
+      <Toast v-if="cartSubmitted">
         Order Submited!<br />
         Check out more <nuxt-link to="/restaurants">restaurants</nuxt-link>
-      </Toast> -->
+      </Toast>
     </section>
 
     <section class="options">
@@ -66,8 +66,12 @@ import { mapState } from "vuex";
 import { Item } from "@/api/interfaces";
 // @ts-ignore
 import { v4 as uuidv4 } from "uuid";
+import Toast from "@/components/Toast.vue";
 
 export default Vue.extend({
+  components: {
+    Toast,
+  },
   data() {
     let id: string = this.$route.params.id;
     let count: number = 1;
@@ -120,7 +124,7 @@ export default Vue.extend({
 
       setTimeout(() => {
         this.cartSubmitted = false;
-      }, 4000);
+      }, 5000);
     },
   },
 });
