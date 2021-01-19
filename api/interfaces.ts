@@ -5,15 +5,15 @@ export interface Restaurant {
   rating: number;
   freeDelivery: boolean;
   id: string;
-  menu: Menu[];
+  menu: Item[];
 }
 
-interface Menu {
+export interface Item {
   item: string;
   img: string;
   price: number;
   id: string;
-  options: string[];
+  options?: string[];
   addOns: string[];
   description: string;
 }

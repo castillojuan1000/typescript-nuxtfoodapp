@@ -11,11 +11,13 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
     "@nuxt/typescript-build": "^2.0.3",
+    "@types/uuid": "^8.3.0",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.1"
   }

@@ -3,14 +3,31 @@ import { Restaurant } from '@/api/interfaces'
 
 export interface RestaurantStoreState {
   foodData: Restaurant[]
+  cart: FormOutput[]
 }
 
+export interface FormOutput {
+  id: string;
+  item: string;
+  count: number;
+  options?: string;
+  addOns: string[];
+  combinedPrice: number;
+}
+
+
+
 export const state: () => RestaurantStoreState = () => ({
-  foodData: []
+  foodData: [],
+  cart: []
+
 })
 
 
 export const mutations = {
+  addToCart: (state: RestaurantStoreState, formOutput: FormOutput) => {
+    state.cart.push(formOutput)
+  },
 
   updateFoodData: (state: RestaurantStoreState, data: Restaurant[]) => {
     state.foodData = data;
