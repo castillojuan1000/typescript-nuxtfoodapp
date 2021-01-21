@@ -63,11 +63,12 @@
 <script lang="ts">
 import Vue from "vue";
 import { mapState } from "vuex";
-import { Item } from "@/api/interfaces";
+import { Item } from "@/interfaces/interfaces";
 // @ts-ignore
 import { v4 as uuidv4 } from "uuid";
+//@ts-ignore
+import { required } from "vuelidate/lib/validators";
 import Toast from "@/components/Toast.vue";
-
 export default Vue.extend({
   components: {
     Toast,
@@ -89,6 +90,10 @@ export default Vue.extend({
       cartSubmitted,
     };
   },
+  // validation:{
+
+  // },
+
   computed: {
     ...mapState(["foodData"]),
     currentItem(): Item {

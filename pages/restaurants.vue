@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Restaurant } from "@/api/interfaces";
+import { Restaurant } from "@/interfaces/interfaces";
 import { mapState } from "vuex";
 import RestaurantsInfo from "@/components/RestaurantsInfo.vue";
 import SelectRestaurant from "@/components/SelectRestaurant.vue";
