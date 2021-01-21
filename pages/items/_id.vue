@@ -26,7 +26,7 @@
             name="option"
             :id="option"
             :value="option"
-            v-model="itemOptions"
+            v-model="$v.itemOptions.$model"
           />
           <label :for="option">{{ option }}</label>
         </div>
@@ -42,7 +42,7 @@
             name="addon"
             :id="addon"
             :value="addon"
-            v-model="itemAddons"
+            v-model="$v.itemAddons.$model"
           />
           <label :for="addon">{{ addon }}</label>
         </div>
@@ -50,6 +50,10 @@
       <Toast v-if="cartSubmitted">
         Order Submited!<br />
         Check out more <nuxt-link to="/restaurants">restaurants</nuxt-link>
+      </Toast>
+      <Toast v-if="errors">
+        Please select options and
+        <br />addons before continuing
       </Toast>
     </section>
 
@@ -80,7 +84,7 @@ export default Vue.extend({
     let itemAddons: string[] = [];
     // let itemSizeAndCost: any[] = [];
     let cartSubmitted: boolean = false;
-
+    let errors: boolean = false;
     return {
       id,
       count,
@@ -88,11 +92,17 @@ export default Vue.extend({
       itemAddons,
       // itemSizeAndCost,
       cartSubmitted,
+      errors,
     };
   },
-  // validation:{
-
-  // },
+  validations: {
+    itemOptions: {
+      required,
+    },
+    itemAddons: {
+      required,
+    },
+  },
 
   computed: {
     ...mapState(["foodData"]),
@@ -124,12 +134,22 @@ export default Vue.extend({
         combinedPrice: this.combinedPrice,
       };
 
-      this.cartSubmitted = true;
-      this.$store.commit("addToCart", formOutput);
+      let addOnError: boolean = this.$v.itemAddons.$invalid;
+      let optionError: boolean = this.currentItem.options
+        ? this.$v.itemOptions.$invalid
+        : false;
 
-      setTimeout(() => {
-        this.cartSubmitted = false;
-      }, 5000);
+      if (addOnError || optionError) {
+        this.errors = true;
+      } else {
+        this.errors = false;
+        this.cartSubmitted = true;
+        this.$store.commit("addToCart", formOutput);
+
+        setTimeout(() => {
+          this.cartSubmitted = false;
+        }, 5000);
+      }
     },
   },
 });
