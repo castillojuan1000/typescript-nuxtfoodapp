@@ -145,10 +145,6 @@ export default Vue.extend({
         this.errors = false;
         this.cartSubmitted = true;
         this.$store.commit("addToCart", formOutput);
-
-        setTimeout(() => {
-          this.cartSubmitted = false;
-        }, 5000);
       }
     },
   },
